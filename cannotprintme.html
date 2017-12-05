@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<style>
+		.PrintMessage { display: none; }
+	</style>
+	<script>
+		if (window.matchMedia) {
+                var mediaQueryList = window.matchMedia('print');
+                mediaQueryList.addListener(function(mql) {
+                    if (mql.matches) {
+                        beforePrint();
+                    } else {
+                        afterPrint();
+                    }
+                });
+            }
+
+		function beforePrint() {
+		    $("#AllContent").hide();
+		    $(".PrintMessage").show();
+		}
+
+		function afterPrint() {
+		    $(".PrintMessage").hide();
+		    $("#AllContent").show();
+		}
+		window.onbeforeprint = beforePrint;
+        window.onafterprint = afterPrint;
+	</script>
+
+	<title>Test Can't Print Function</title>
+</head>
+
+<body>
+
+</body>
+</html>
+
+<div class="PrintMessage">You are not authorized to print this document</div>
+<div id="AllContent">
+    <div>You won't see anything when printing</div>
+    <div>You won't see anything when printing</div>
+    <div>You won't see anything when printing</div>
+    <div>You won't see anything when printing</div>
+    <div>You won't see anything when printing</div>
+</div>
